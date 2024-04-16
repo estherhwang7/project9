@@ -1,20 +1,17 @@
 import java.util.*;
 
-
 class LibraryItem {
-    // Instance variables
-    protected String title;
-    protected String itemType;
-    protected boolean checkedOut;
+    private String title;
+    private String itemType;
+    private boolean checkedOut;
 
-    // Constructors
+
     public LibraryItem(String title, String itemType) {
         this.title = title;
         this.itemType = itemType;
         this.checkedOut = false;
     }
 
-    // Accessors and modifiers
     public String getTitle() {
         return title;
     }
@@ -39,37 +36,37 @@ class LibraryItem {
         this.checkedOut = checkedOut;
     }
 
-    // toString method
-    @Override
     public String toString() {
         return "Title: " + title + ", Type: " + itemType + ", Checked Out: " + checkedOut;
     }
 
-    // Equals method
-    @Override
+ 
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        LibraryItem that = (LibraryItem) obj;
-        return checkedOut == that.checkedOut && title.equals(that.title) && itemType.equals(that.itemType);
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        return checkedOut == ((LibraryItem) obj).checkedOut && title.equals(((LibraryItem) obj).title) && itemType.equals(((LibraryItem) obj).itemType);
     }
+    
 
-    // Interesting method 1
     public void checkOut() {
         if (!checkedOut) {
             System.out.println("Successfully checked out: " + title);
             checkedOut = true;
-        } else {
+        }
+        else {
             System.out.println("Item is already checked out.");
         }
     }
 
-    // Interesting method 2
+
     public void checkIn() {
         if (checkedOut) {
             System.out.println("Successfully checked in: " + title);
             checkedOut = false;
-        } else {
+        }
+        else {
             System.out.println("Item is already checked in.");
         }
     }
